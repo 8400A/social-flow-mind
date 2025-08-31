@@ -60,8 +60,7 @@ export const SourcesTab = () => {
   };
 
   return (
-    <div className="h-full overflow-auto">
-      <div className="p-6 space-y-6">
+    <div className="p-6 space-y-6 pb-8">
         {/* Hashtags Analyzed */}
         <Card>
           <CardHeader>
@@ -207,6 +206,5 @@ export const SourcesTab = () => {
           </CardContent>
         </Card>
       </div>
-    </div>
   );
 };

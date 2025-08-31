@@ -3,7 +3,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { RefreshCw, Share, BarChart3, Download } from "lucide-react";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { RefreshCw, Share, BarChart3, Download, TrendingUp, Music, Camera, Database, Map, FileText, Globe } from "lucide-react";
 import { OverviewTab } from "./tabs/OverviewTab";
 import { TikTokTab } from "./tabs/TikTokTab";
 import { InstagramTab } from "./tabs/InstagramTab";
@@ -58,50 +59,71 @@ export const InsightsDashboard = () => {
       {/* Tabs */}
       <Tabs value={activeTab} onValueChange={setActiveTab} className="h-full flex flex-col">
         <TabsList className="grid w-full grid-cols-7 bg-background border-b border-card-border rounded-none px-6">
-          <TabsTrigger value="overview" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
-            📊 Overview
+          <TabsTrigger value="overview" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground gap-2">
+            <TrendingUp className="h-4 w-4" />
+            Overview
           </TabsTrigger>
-          <TabsTrigger value="tiktok" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
-            🎵 TikTok
+          <TabsTrigger value="tiktok" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground gap-2">
+            <Music className="h-4 w-4" />
+            TikTok
           </TabsTrigger>
-          <TabsTrigger value="instagram" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
-            📸 Instagram
+          <TabsTrigger value="instagram" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground gap-2">
+            <Camera className="h-4 w-4" />
+            Instagram
           </TabsTrigger>
-          <TabsTrigger value="rawdata" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
-            📈 Raw Data
+          <TabsTrigger value="rawdata" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground gap-2">
+            <Database className="h-4 w-4" />
+            Raw Data
           </TabsTrigger>
-          <TabsTrigger value="plan" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
-            🗺️ Plan
+          <TabsTrigger value="plan" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground gap-2">
+            <Map className="h-4 w-4" />
+            Plan
           </TabsTrigger>
-          <TabsTrigger value="notes" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
-            📝 Notes
+          <TabsTrigger value="notes" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground gap-2">
+            <FileText className="h-4 w-4" />
+            Notes
           </TabsTrigger>
-          <TabsTrigger value="sources" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
-            🌐 Sources
+          <TabsTrigger value="sources" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground gap-2">
+            <Globe className="h-4 w-4" />
+            Sources
           </TabsTrigger>
         </TabsList>
 
         <div className="flex-1 overflow-hidden">
           <TabsContent value="overview" className="h-full m-0">
-            <OverviewTab />
+            <ScrollArea className="h-full">
+              <OverviewTab />
+            </ScrollArea>
           </TabsContent>
           <TabsContent value="tiktok" className="h-full m-0">
-            <TikTokTab />
+            <ScrollArea className="h-full">
+              <TikTokTab />
+            </ScrollArea>
           </TabsContent>
           <TabsContent value="instagram" className="h-full m-0">
-            <InstagramTab />
+            <ScrollArea className="h-full">
+              <InstagramTab />
+            </ScrollArea>
           </TabsContent>
           <TabsContent value="rawdata" className="h-full m-0">
-            <RawDataTab />
+            <ScrollArea className="h-full">
+              <RawDataTab />
+            </ScrollArea>
           </TabsContent>
           <TabsContent value="plan" className="h-full m-0">
-            <PlanTab />
+            <ScrollArea className="h-full">
+              <PlanTab />
+            </ScrollArea>
           </TabsContent>
           <TabsContent value="notes" className="h-full m-0">
-            <NotesTab />
+            <ScrollArea className="h-full">
+              <NotesTab />
+            </ScrollArea>
           </TabsContent>
           <TabsContent value="sources" className="h-full m-0">
-            <SourcesTab />
+            <ScrollArea className="h-full">
+              <SourcesTab />
+            </ScrollArea>
           </TabsContent>
         </div>
       </Tabs>

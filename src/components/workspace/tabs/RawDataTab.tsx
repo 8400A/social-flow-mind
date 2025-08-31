@@ -90,8 +90,7 @@ export const RawDataTab = () => {
   };
 
   return (
-    <div className="h-full overflow-auto">
-      <div className="p-6 space-y-4">
+    <div className="p-6 space-y-4 pb-8">
         {/* Filters */}
         <Card>
           <CardContent className="p-4">
@@ -179,6 +178,5 @@ export const RawDataTab = () => {
           </div>
         </div>
       </div>
-    </div>
   );
 };

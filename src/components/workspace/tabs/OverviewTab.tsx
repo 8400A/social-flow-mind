@@ -30,8 +30,7 @@ export const OverviewTab = () => {
   ];
 
   return (
-    <div className="h-full overflow-auto">
-      <div className="p-6 space-y-6">
+    <div className="p-6 space-y-6 pb-8">
         {/* Cross-Platform Sentiment */}
         <Card>
           <CardHeader>
@@ -126,6 +125,5 @@ export const OverviewTab = () => {
           </CardContent>
         </Card>
       </div>
-    </div>
   );
 };

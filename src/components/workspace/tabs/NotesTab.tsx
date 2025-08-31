@@ -88,8 +88,7 @@ export const NotesTab = () => {
   };
 
   return (
-    <div className="h-full overflow-auto">
-      <div className="p-6 space-y-4">
+    <div className="p-6 space-y-4 pb-8">
         <Card>
           <CardHeader>
             <CardTitle className="text-lg">Analysis Notes & Insights</CardTitle>
@@ -148,6 +147,5 @@ export const NotesTab = () => {
           </CardContent>
         </Card>
       </div>
-    </div>
   );
 };

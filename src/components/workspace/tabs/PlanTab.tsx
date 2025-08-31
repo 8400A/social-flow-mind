@@ -65,8 +65,7 @@ export const PlanTab = () => {
   };
 
   return (
-    <div className="h-full overflow-auto">
-      <div className="p-6 space-y-6">
+    <div className="p-6 space-y-6 pb-8">
         {/* Objective */}
         <Card>
           <CardHeader>
@@ -165,6 +164,5 @@ export const PlanTab = () => {
           </CardContent>
         </Card>
       </div>
-    </div>
   );
 };

@@ -1,6 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
+import { TrendingUp, TrendingDown, ArrowRight, Play } from "lucide-react";
 
 export const TikTokTab = () => {
   const keyMetrics = [
@@ -50,8 +51,7 @@ export const TikTokTab = () => {
   ];
 
   return (
-    <div className="h-full overflow-auto">
-      <div className="p-6 space-y-6">
+    <div className="p-6 space-y-6 pb-8">
         {/* Key Metrics */}
         <div className="grid grid-cols-3 gap-4">
           {keyMetrics.map((metric) => (
@@ -84,9 +84,12 @@ export const TikTokTab = () => {
                   </div>
                   <Badge 
                     variant={audio.trend === 'up' ? 'default' : audio.trend === 'down' ? 'destructive' : 'secondary'}
-                    className="text-xs"
+                    className="text-xs gap-1"
                   >
-                    {audio.trend === 'up' ? '↗️' : audio.trend === 'down' ? '↘️' : '→'}
+                    {audio.trend === 'up' ? <TrendingUp className="h-3 w-3" /> : 
+                     audio.trend === 'down' ? <TrendingDown className="h-3 w-3" /> : 
+                     <ArrowRight className="h-3 w-3" />}
+                    {audio.trend}
                   </Badge>
                 </div>
               ))}
@@ -129,7 +132,7 @@ export const TikTokTab = () => {
                     </div>
                   </div>
                   <div className="w-16 h-16 bg-chart-tiktok/10 rounded-lg flex items-center justify-center">
-                    🎵
+                    <Play className="h-6 w-6 text-chart-tiktok" />
                   </div>
                 </div>
               ))}
@@ -137,6 +140,5 @@ export const TikTokTab = () => {
           </CardContent>
         </Card>
       </div>
-    </div>
   );
 };

@@ -1,6 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
+import { Image } from "lucide-react";
 
 export const InstagramTab = () => {
   const keyMetrics = [
@@ -51,8 +52,7 @@ export const InstagramTab = () => {
   ];
 
   return (
-    <div className="h-full overflow-auto">
-      <div className="p-6 space-y-6">
+    <div className="p-6 space-y-6 pb-8">
         {/* Key Metrics */}
         <div className="grid grid-cols-3 gap-4">
           {keyMetrics.map((metric) => (
@@ -137,7 +137,7 @@ export const InstagramTab = () => {
                     </div>
                   </div>
                   <div className="w-16 h-16 bg-chart-instagram/10 rounded-lg flex items-center justify-center">
-                    📸
+                    <Image className="h-6 w-6 text-chart-instagram" />
                   </div>
                 </div>
               ))}
@@ -145,6 +145,5 @@ export const InstagramTab = () => {
           </CardContent>
         </Card>
       </div>
-    </div>
   );
 };
