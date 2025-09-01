@@ -30,7 +30,7 @@ export const OverviewTab = () => {
   ];
 
   return (
-    <div className="p-6 space-y-6 pb-8">
+    <div className="p-6 space-y-6 pb-16">
         {/* Cross-Platform Sentiment */}
         <Card>
           <CardHeader>

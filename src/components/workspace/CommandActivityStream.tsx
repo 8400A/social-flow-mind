@@ -3,7 +3,8 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Input } from "@/components/ui/input";
-import { Send } from "lucide-react";
+import { Send, Music, Camera, Users, MessageCircle } from "lucide-react";
+import { PlatformSelector } from "./PlatformSelector";
 
 interface Message {
   id: string;
@@ -13,7 +14,19 @@ interface Message {
   status?: string;
 }
 
-export const CommandActivityStream = () => {
+interface Platform {
+  id: string;
+  name: string;
+  icon: any;
+  isActive: boolean;
+}
+
+interface CommandActivityStreamProps {
+  selectedPlatforms: Platform[];
+  onTogglePlatform: (platformId: string) => void;
+}
+
+export const CommandActivityStream = ({ selectedPlatforms, onTogglePlatform }: CommandActivityStreamProps) => {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
@@ -115,6 +128,14 @@ export const CommandActivityStream = () => {
       {/* Header */}
       <div className="border-b border-card-border bg-panel-header px-4 py-3">
         <h2 className="text-lg font-semibold text-foreground">Command & Activity Stream</h2>
+      </div>
+
+      {/* Platform Selector */}
+      <div className="p-4">
+        <PlatformSelector 
+          platforms={selectedPlatforms} 
+          onTogglePlatform={onTogglePlatform} 
+        />
       </div>
 
       {/* Messages */}

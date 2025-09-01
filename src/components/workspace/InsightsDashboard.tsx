@@ -4,17 +4,34 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { RefreshCw, Share, BarChart3, Download, TrendingUp, Music, Camera, Database, Map, FileText, Globe } from "lucide-react";
+import { RefreshCw, Share, BarChart3, Download, TrendingUp, Music, Camera, Database, Map, FileText, Globe, Users, MessageCircle } from "lucide-react";
 import { OverviewTab } from "./tabs/OverviewTab";
 import { TikTokTab } from "./tabs/TikTokTab";
 import { InstagramTab } from "./tabs/InstagramTab";
+import { FacebookTab } from "./tabs/FacebookTab";
+import { XTab } from "./tabs/XTab";
 import { RawDataTab } from "./tabs/RawDataTab";
 import { PlanTab } from "./tabs/PlanTab";
 import { NotesTab } from "./tabs/NotesTab";
 import { SourcesTab } from "./tabs/SourcesTab";
 
-export const InsightsDashboard = () => {
+interface Platform {
+  id: string;
+  name: string;
+  icon: any;
+  isActive: boolean;
+}
+
+interface InsightsDashboardProps {
+  selectedPlatforms: Platform[];
+}
+
+export const InsightsDashboard = ({ selectedPlatforms }: InsightsDashboardProps) => {
   const [activeTab, setActiveTab] = useState("overview");
+
+  const isPlatformActive = (platformId: string) => {
+    return selectedPlatforms.find(p => p.id === platformId)?.isActive || false;
+  };
 
   return (
     <div className="h-full bg-background border-r border-panel-border">
@@ -58,18 +75,46 @@ export const InsightsDashboard = () => {
 
       {/* Tabs */}
       <Tabs value={activeTab} onValueChange={setActiveTab} className="h-full flex flex-col">
-        <TabsList className="grid w-full grid-cols-7 bg-background border-b border-card-border rounded-none px-6">
+        <TabsList className="grid w-full grid-cols-9 bg-background border-b border-card-border rounded-none px-6">
           <TabsTrigger value="overview" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground gap-2">
             <TrendingUp className="h-4 w-4" />
             Overview
           </TabsTrigger>
-          <TabsTrigger value="tiktok" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground gap-2">
+          <TabsTrigger 
+            value="tiktok" 
+            className={`data-[state=active]:bg-primary data-[state=active]:text-primary-foreground gap-2 ${
+              !isPlatformActive('tiktok') ? 'opacity-50 text-muted-foreground' : ''
+            }`}
+          >
             <Music className="h-4 w-4" />
             TikTok
           </TabsTrigger>
-          <TabsTrigger value="instagram" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground gap-2">
+          <TabsTrigger 
+            value="instagram" 
+            className={`data-[state=active]:bg-primary data-[state=active]:text-primary-foreground gap-2 ${
+              !isPlatformActive('instagram') ? 'opacity-50 text-muted-foreground' : ''
+            }`}
+          >
             <Camera className="h-4 w-4" />
             Instagram
+          </TabsTrigger>
+          <TabsTrigger 
+            value="facebook" 
+            className={`data-[state=active]:bg-primary data-[state=active]:text-primary-foreground gap-2 ${
+              !isPlatformActive('facebook') ? 'opacity-50 text-muted-foreground' : ''
+            }`}
+          >
+            <Users className="h-4 w-4" />
+            Facebook
+          </TabsTrigger>
+          <TabsTrigger 
+            value="x" 
+            className={`data-[state=active]:bg-primary data-[state=active]:text-primary-foreground gap-2 ${
+              !isPlatformActive('x') ? 'opacity-50 text-muted-foreground' : ''
+            }`}
+          >
+            <MessageCircle className="h-4 w-4" />
+            X
           </TabsTrigger>
           <TabsTrigger value="rawdata" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground gap-2">
             <Database className="h-4 w-4" />
@@ -103,6 +148,16 @@ export const InsightsDashboard = () => {
           <TabsContent value="instagram" className="h-full m-0">
             <ScrollArea className="h-full">
               <InstagramTab />
+            </ScrollArea>
+          </TabsContent>
+          <TabsContent value="facebook" className="h-full m-0">
+            <ScrollArea className="h-full">
+              <FacebookTab />
+            </ScrollArea>
+          </TabsContent>
+          <TabsContent value="x" className="h-full m-0">
+            <ScrollArea className="h-full">
+              <XTab />
             </ScrollArea>
           </TabsContent>
           <TabsContent value="rawdata" className="h-full m-0">
